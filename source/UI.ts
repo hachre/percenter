@@ -1,8 +1,8 @@
 class UI {
-	public hdlInputPercent1: HTMLElement;
-	public hdlInputPercent2: HTMLElement;
-	public hdlButtonRun: HTMLElement;
-	public hdlOutput: HTMLElement;
+	private hdlInputPercent1: HTMLElement;
+	private hdlInputPercent2: HTMLElement;
+	private hdlButtonRun: HTMLElement;
+	private hdlOutput: HTMLElement;
 
 	constructor() {
 		this.hdlInputPercent1 = document.getElementById("InputPercent1");
@@ -11,7 +11,7 @@ class UI {
 		this.hdlOutput = document.getElementById("Output");
 
 		this.hdlButtonRun.addEventListener("click", function() {
-			Percent.Run();
+			Percenter.Run();
 		});
 
 		console.log("UI ready...");

@@ -4,11 +4,11 @@
 		"noImplicitAny": true,
 		"removeComments": true,
 		"preserveConstEnums": true,
-		"out": "percent.js",
+		"out": "source/percenter.js",
 		"sourceMap": true
 	},
 	"files": [
-		"percent.ts",
-		"ui.ts"
+		"Program.ts",
+		"UI.ts"
 	]
 }
