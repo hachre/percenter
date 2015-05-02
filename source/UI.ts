@@ -1,22 +1,40 @@
 declare var Percenter: any;
 
 class UI {
-	private hdlInputPercent1: HTMLElement;
-	private hdlInputPercent2: HTMLElement;
-	private hdlButtonRun: HTMLElement;
-	private hdlOutput: HTMLElement;
+	private hdlInputPercent1: HTMLInputElement;
+	private hdlInputPercent2: HTMLInputElement;
+	private hdlButtonRun: HTMLButtonElement;
+	private hdlOutput: HTMLDivElement;
 
 	constructor() {
-		this.hdlInputPercent1 = document.getElementById("InputPercent1");
-		this.hdlInputPercent2 = document.getElementById("InputPercent2");
-		this.hdlButtonRun = document.getElementById("ButtonRun");
-		this.hdlOutput = document.getElementById("Output");
+		this.hdlInputPercent1 = <HTMLInputElement>document.getElementById("InputPercent1");
+		this.hdlInputPercent2 = <HTMLInputElement>document.getElementById("InputPercent2");
+		this.hdlButtonRun = <HTMLButtonElement>document.getElementById("ButtonRun");
+		this.hdlOutput = <HTMLDivElement>document.getElementById("Output");
 
-		this.hdlButtonRun.addEventListener("click", function() {
-			Percenter.Run();
+		this.hdlButtonRun.addEventListener("click", () => {
+			// Read the current inputs from the UI and calculate the percentage.
+			Percenter.Calc.Value1 = this.getValue1();
+			Percenter.Calc.Value2 = this.getValue2();
+			var percentage = Percenter.Calc.getPercentage();
+			
+			// Set the result in the UI.
+			this.setOutput(percentage);
 		});
 
 		console.log("UI ready...");
+	}
+	
+	private getValue1(): number {
+		return Number(this.hdlInputPercent1.value);
+	}
+	
+	private getValue2(): number {
+		return Number(this.hdlInputPercent2.value);		
+	}
+	
+	private setOutput(value: number): void {
+		this.hdlOutput.textContent = value.toString() + "%";		
 	}
 }
 
