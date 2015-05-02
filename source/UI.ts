@@ -24,17 +24,24 @@ class UI {
 
 		console.log("UI ready...");
 	}
-	
+
 	private getValue1(): number {
-		return Number(this.hdlInputPercent1.value);
+		return Number(this.cleanDecimal(this.hdlInputPercent1.value));
 	}
-	
+
 	private getValue2(): number {
-		return Number(this.hdlInputPercent2.value);		
+		return Number(this.cleanDecimal(this.hdlInputPercent2.value));
 	}
-	
+
 	private setOutput(value: number): void {
-		this.hdlOutput.textContent = value.toString() + "%";		
+		this.hdlOutput.textContent = value.toFixed(2).replace(".00","") + "%";
+	}
+
+	private cleanDecimal(value: string): string {
+		if (value.indexOf(",") !== -1) {
+			return value.replace(",", ".");
+		}
+		return value;
 	}
 }
 
