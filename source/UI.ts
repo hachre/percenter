@@ -1,3 +1,5 @@
+declare var Percenter: any;
+
 class UI {
 	private hdlInputPercent1: HTMLElement;
 	private hdlInputPercent2: HTMLElement;
@@ -18,4 +20,4 @@ class UI {
 	}
 }
 
-new UI();
+Percenter.UI = new UI();
