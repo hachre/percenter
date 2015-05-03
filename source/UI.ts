@@ -3,12 +3,14 @@ declare var Percenter: any;
 class UI {
 	private hdlInputPercent1: HTMLInputElement;
 	private hdlInputPercent2: HTMLInputElement;
+	private hdlInputResultAugmentation: HTMLInputElement;
 	private hdlButtonRun: HTMLButtonElement;
 	private hdlOutput: HTMLDivElement;
 
 	constructor() {
 		this.hdlInputPercent1 = <HTMLInputElement>document.getElementById("InputPercent1");
 		this.hdlInputPercent2 = <HTMLInputElement>document.getElementById("InputPercent2");
+		this.hdlInputResultAugmentation = <HTMLInputElement>document.getElementById("InputResultAugmentation");
 		this.hdlButtonRun = <HTMLButtonElement>document.getElementById("ButtonRun");
 		this.hdlOutput = <HTMLDivElement>document.getElementById("Output");
 
@@ -16,6 +18,7 @@ class UI {
 			// Read the current inputs from the UI and calculate the percentage.
 			Percenter.Calc.Value1 = this.getValue1();
 			Percenter.Calc.Value2 = this.getValue2();
+			Percenter.Calc.ResultAugmentation = this.getResultAugmentation() || 1;
 			var percentage = Percenter.Calc.getPercentage();
 			
 			// Set the result in the UI.
@@ -31,6 +34,10 @@ class UI {
 
 	private getValue2(): number {
 		return Number(this.cleanDecimal(this.hdlInputPercent2.value));
+	}
+	
+	private getResultAugmentation(): number {
+		return Number(this.hdlInputResultAugmentation.value);
 	}
 
 	private setOutput(value: number): void {
