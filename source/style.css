@@ -3,12 +3,27 @@
 	font-size: 1.5em;
 }
 
+body {
+	padding-top: 1em;
+}
+
 input {
 	text-align: center;
 	width: 5em;
 	padding: 0.25em;
 	margin: 0;
 	height: 1.25em;
+	outline: none;
+	border: 1px solid Silver;
+	border-bottom: none;
+}
+
+input.last {
+	border-bottom: 1px solid Silver;
+}
+
+button {
+	display: none;
 }
 
 input, #Output {
